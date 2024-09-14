@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anta&family=Dancing+Script:wght@400..700&family=Noto+Sans+Khojki&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anta&family=Dancing+Script:wght@400..700&family=Noto+Sans+Khojki&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarjeta de Boda</title>
+  <style>
+
+
+    body {
+      font-family: "Dancing Script", cursive;
+      margin: 0;
+      padding: 0;
+      display: inline;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      /* background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('img/fondo2.jpeg'); Fondo verde para toda la pantalla */
+      background-color: #800020;
+      transition: background 1s ease; /* Añade una transición suave al fondo */
+    }
+
+    #fondo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: opacity 2s ease; /* Añade una transición suave a la opacidad */
+    }
+
+    #bienvenida {
+      text-align: center;
+      padding: 20px;
+      background-color: #ffffff;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin: 20px; /* Ajusta el margen según tus necesidades */
+      font-family: "Dancing Script", cursive;
+      opacity: 0; /* Inicialmente oculto */
+      transition: opacity 2s ease; /* Añade una transición suave a la opacidad */
+      white-space: pre-line
+    }
+
+    #bienvenida_fija {
+      text-align: center;
+      padding: 20px;
+      background-color: #ffffff;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin: 20px; /* Ajusta el margen según tus necesidades */
+      font-family: "Dancing Script", cursive;
+      opacity: 0; /* Inicialmente oculto */
+      transition: opacity 2s ease; /* Añade una transición suave a la opacidad */
+      justify-content: center;
+      display: flex;
+      flex-direction: column; /* Alinea los elementos en columna */
+      align-items: center; /* Centra los elementos horizontalmente */
+      margin-bottom: 2px;
+      margin-top: 2px;
+    }
+
+    #tarjeta {
+      text-align: center;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      display: none; /* Inicialmente oculto */
+      margin: 20px; /* Ajusta el margen según tus necesidades */
+      font-family: "Dancing Script", cursive;
+      opacity: 0; /* Inicialmente oculto */
+      transition: opacity 2s ease; /* Añade una transición suave a la opacidad */
+    }
+
+    #foto2 {
+
+      width: 50%;
+
+    }
+
+    #boton-ubicacion{
+      margin-top: 0px;
+      width: 60px; /* Ancho del botón */
+      height: 30px; /* Alto del botón */
+      font-size: 8px; /* Tamaño de la fuente del botón */
+      align-items: center;
+      justify-content:center;
+      text-align: center;
+    }
+
+    #boton-confirmar{
+      margin-top: 0px;
+      width: 40vh; /* Ancho del botón */
+      height: 50px; /* Alto del botón */
+      font-size: 12px; /* Tamaño de la fuente del botón */
+      align-items: center;
+      justify-content:center;
+      text-align: center;
+      border-radius: 10px;
+    }
+
+
+    #asistencia{
+      background: linear-gradient(to bottom right, #f5e6e3, #b64040);
+      border-radius: 10px;
+      padding: 20px;
+    }
+    h1 {
+      color: #333;
+    }
+
+    img {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+
+    p {
+      color: #000000;
+    }
+
+    button {
+      background-color: #800020;
+      color: white;
+
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 20px;
+      text-align:center
+    }
+
+    button:hover {
+      background-color: #e7aaaa;
+    }
+
+    .countdown {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    
+    }
+
+    .countdown-item {
+        margin: 0 10px;
+        font-size: 2em;
+        border-radius: 20%; /* Bordes redondeados */
+        background-color: #92c2ee; /* Color de fondo */
+        box-shadow: 0 4px 8px rgba(39, 37, 37, 0.1); /* Sombra */
+        border: 2px solid #77b1f3; /* Borde de otro color */
+        font-family: "Times New Roman", Times, serif;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+    }
+
+    .fecha{
+      display: flex;
+      justify-content: space-between; /* Alinea los elementos al principio y al final del contenedor */
+      width: 300px; /* Ancho del contenedor */
+      padding: 10px; /* Espaciado interno del contenedor */
+      border: 1px solid #000; /* Borde para visualizar el contenedor */
+      align-items: center; /* quitar para que aparez la raya */
+    }
+
+    .separador {
+        border-right: 1px solid #000; /* Línea vertical divisoria */
+        margin-right: 10px; /* Espacio entre el separador y el texto */
+    }
+
+    .contenedor-padre {
+        display: flex;
+        justify-content: center;
+    }
+
+    .dress-code{
+      padding: 0px;
+      width: 80%;
+      justify-content: center;
+    }
+
+    .logo-boda {
+      padding: -3px;
+      width: 80%; /* Usa un ancho del 100% para asegurarte de que la imagen no se desborde de su contenedor */
+      height: 80%; /* Usa 'auto' para mantener la proporción de la imagen */
+      justify-content: center;
+    }
+
+    .contenedor {
+      display: flex;
+      justify-content: center; /* Centra los elementos horizontalmente */
+      align-items: center; /*Centra los elementos verticalmente */
+      flex-direction: column; /* Alinea los elementos en columna (opcional) */
+      /* height: 100vh; Ajusta la altura del div al 100% de la ventana */
+      /* border: 1px solid black; Para visualizar el contenedor */
+    }
+
+    .contenedor2 {
+      width: 100%;
+      max-width: 40vh; /* Puedes ajustar este valor si quieres limitar el ancho máximo */
+      margin: 0 auto; /* Centra el contenedor horizontalmente */
+      padding: 20px;
+    }
+
+    .frase {
+      font-size: 24px;
+      margin-bottom: 20px;
+      max-width: 30vh;
+    }
+
+    p {
+      max-width: 100%; /* o un valor específico como '150px' */
+      word-wrap: break-word; /* Esto evitará que las palabras largas ensanchen el contenedor */
+      justify-content: center;
+    }
+
+    .linea-tiempo {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background-color: #333;
+      transform: translateY(-50%);
+      
+    }
+
+    .temp_l {
+      display: flex;
+      flex-direction: column; /* Alinea los elementos en columna */
+      align-items: center; /* Centra los elementos horizontalmente */
+    }
+    .temp_text {
+      display: flex;
+      flex-direction: column; /* Alinea los elementos en columna */
+      align-items: center; /* Centra los elementos horizontalmente */
+
+    }
+
+    #counter {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      height: 10vh;
+        }
+
+    .box-container {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 6px;
+
+    }
+
+    .box {
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        height: 30px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1.0rem;
+        background-color:#800020;
+        font-size: Georgia ;
+        color:white;
+        display: flex;
+        flex-direction: column; /* Alinea los elementos en columna */
+        align-items: center; /* Centra los elementos horizontalmente */
+        align-content: center;
+        
+        
+    }
+
+    .box span {
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        font-family: "Anta", sans-serif;
+        margin-top: 4px;
+        
+    }
+
+    #letra_count {
+      color:black;
+    }
+
+    #hora {
+      align-items: center;
+      justify-content: center;
+    }
+
+    #separadores {
+      font-size: 40px;
+      font-family: Arial;
+      font-weight: 1px;
+
+    }
+
+    #img-machete {
+      width: 8%;
+      height: auto;
+      padding: 0;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin: 0 0;
+    }
+
+    .contenedor-carrusel {
+      /* font-family: Arial, sans-serif; */
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      height: auto;
+      padding: 0;
+      margin: 0;
+      background-color: #ffffff;
+      width: 40%;
+      /* border-radius: 15px; */
+      margin-top: -40px;
+      padding-top: 0%;
+      border-top: 0px;
+      border-left: 0px;
+      padding-left: 0px;
+      border-right: 0px;
+      padding-right: 0px;
+    }
+    .carousel-container {
+      position: relative;
+      width: 80%;
+      max-width: 600px;
+      overflow: hidden;
+      border-radius: 20px;
+      /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); */
+      background-color: white;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      height: auto;
+      padding: 0;
+      margin: 0;
+      background-color: #ffffff;
+      width: 40%;
+      /* border-radius: 15px; */
+      margin-top: -40px;
+      padding-top: 0%;
+      border-top: 0px;
+    }
+
+    .carousel {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-item {
+        min-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .carousel-item img {
+        width: 100%;
+        border-radius: 20px;
+    }
+
+    .prev-btn, .next-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 50%;
+    }
+
+    .prev-btn {
+        left: 10px;
+    }
+
+    .next-btn {
+        right: 10px;
+    }
+
+    .prev-btn:hover, .next-btn:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+        }
+
+
+    .video-container {
+        max-width: 800px;
+        margin: 0 auto;
+        /* padding: 10px; */
+        /* border: 2px solid #ccc; */
+        /* border-radius: 10px; */
+        /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+        /* background-color: #f9f9f9; */
+        /* filter: blur(15px); */
+    }
+
+    /* Estilos para el video */
+    video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border-radius: 10px;
+    }
+
+    .codigo-vestuario{
+      margin-bottom: 0px;
+    }
+
+    .img-codigo-vestuario{
+      margin-top: 0px;
+    }
+
+    .p-text{
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+
+    .p-text1{
+      margin-top: 5px;
+      margin-bottom: 0px;
+    }
+
+    .p-text2{
+      margin-top: 30px;
+      margin-bottom: 0px;
+    }
+
+    .p-text3{
+      margin-top: 0px;
+      margin-bottom: 0px;
+      font-size: 15px;
+    }
+
+    .p-text4{
+      width: 100%; /* El párrafo ocupa todo el ancho del contenedor */
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .confirmacion{
+      margin-top: -10px;
+    }
+
+    .papas {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    .column {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        text-align: center;
+        width: 48%;
+    }
+
+    .column div {
+            font-size: 5vw; /* Cambia el tamaño del texto aquí */
+            white-space: nowrap;
+            overflow: hidden;
+            font-size: 90%;
+        }
+
+
+    .container-bottoms {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 600px;
+      margin: 20px auto;
+        }
+    .column-bottom {
+      width: 48%; /* Cada botón ocupa el 48% del ancho del contenedor */
+      display: flex;
+      justify-content: center;
+    }
+
+    .column-bottom button {
+        font-size: 4vw; /* Ajusta el tamaño del texto del botón según el ancho de la pantalla */
+        padding: 10px;
+        width: 100%;
+    }
+
+  </style>
+</head>
+<body>
+    <div id="fondo">
+
+        <div id="bienvenida">
+            <h1 id="mensaje"> </h1>
+        </div>
+
+        <div id="bienvenida_fija">
+          <img src="img/logow.jpeg" alt="casamos" class="logo-boda">
+          <audio id="miAudio" controls loop>
+            <source src="media/cancion.mp3" type="audio/mp3">
+            Tu navegador no soporta el elemento de audio.
+          </audio>
+        </div>
+
+        <div id="tarjeta">
+
+          <h3>Con la bendicicon de nuestros padres</h3>
+          <div class="papas" style="width: 40vh">
+            
+            <div class="column">
+                <p style="font-size: 10px;">Padres de la novia</p>
+                <div>Efrén Felipe Zuluaga Ángel</div>
+                <div>Dalia Nury Alvarez Arboleda</div>
+            </div>
+            <div class="column" >
+                <p style="font-size: 10px;">Padres del novio</p>
+                <div>Luis Atehortua Velasquez</div>
+                <div>Miriam Zapata Garcia</div>
+            </div>
+        </div>
+
+        <br>
+
+          <div class="contenedor">
+            <div class="frase"> 
+              <p class="p-text1"> Hemos tomado la decisión de unir nuestras vidas para siempre, rodeados de las personas más valiosas para nosotros.
+
+              </p>
+            </div>
+            <div class="frase"> 
+              <p class="p-text"> Así que, si estás aquí, es porque has hecho parte de algún momento importante en nuestras vidas y esperamos que nos puedas acompañar en uno más.
+
+              </p>
+            </div>
+          </div>
+
+
+          <br>
+          <!-- <div class="contenedor-carrusel" style="width: 45vh; height: 55vh; overflow: hidden;"> -->
+            <div class="carousel-container" style="width: 42vh; height: 55vh; overflow: hidden;">
+              <div class="carousel">
+                  <div class="carousel-item active">
+                      <img src="img/carrusel_foto1.jpeg" alt="Imagen 1" style="width: 40vh; height: 50vh; overflow: hidden;">
+                  </div>
+                  <div class="carousel-item">
+                      <img src="img/carrusel_foto2.jpeg" alt="Imagen 2" style="width: 40vh; height: 50vh; overflow: hidden;">
+                  </div>
+                  <div class="carousel-item">
+                      <img src="img/carrusel_foto1.jpeg" alt="Imagen 3" style="width: 40vh; height: 50vh; overflow: hidden;">
+                  </div>
+                  <div class="carousel-item">
+                      <img src="img/carrusel_foto1.jpeg" alt="Imagen 4" style="width: 40vh; height: 50vh; overflow: hidden;">
+                  </div>
+              </div>
+              <button class="prev-btn">◀</button>
+              <button class="next-btn">▶</button>
+            </div>
+          <!-- </div> -->
+
+
+
+
+          <!-- <img src="img/linea4.png"> -->
+
+          <!-- <div class="contenedor2">
+            <div class="frase2">
+              <p>Empieza la cuenta regresiva para este gran día</p>
+            </div>
+          </div> -->
+
+          <div class="contenedor2">
+              <p class="p-text4" style="width: 40vh;"> Empieza la cuenta regresiva para este gran día
+              </p>
+          </div>
+
+          <!-- hay un bug con esto y no se puede borrar -->
+          <div id="inicio">
+            <!-- <h1> Dias para la boda: </h1> -->
+            <div class="countdown" style="display: none;">
+              <div class="temp_l" style="display: none;">
+                <div id="days" class="countdown-item"></div>
+                <div>Días</div>
+              </div>
+              <div class="temp_l" style="display: none;">
+                <div id="hours" class="countdown-item"></div>
+                <div>Horas</div>
+              </div>
+              <div class="temp_l" style="display: none;">
+                <div id="minutes" class="countdown-item"></div>
+                <div>Minutos</div>
+              </div>
+              <div class="temp_l" style="display: none;">
+                <div id="seconds" class="countdown-item"></div>
+                <div>Segundos</div>
+              </div>
+            </div>
+          </div>
+           <!-- ____________________________________________ -->
+          <div id="counter">
+            <div class="temp_text">
+              <div class="box-container">
+                
+                  <div class="box">
+                      <span id="d1"></span>
+
+                  </div>
+                  <div class="box">
+                      <span id="d2"></span>
+                  </div>
+                  <div class="box">
+                      <span id="d3"></span>
+                  </div>
+                
+              </div>
+              <div>Días</div>
+            </div>
+            <div class="temp_text">
+              <div class="box-container">
+                  <div class="box">
+                      <span id="h1"></span>
+                  </div>
+                  <div class="box">
+                      <span id="h2"></span>
+                  </div>
+              </div>
+              <div>Horas</div>
+            </div>
+            <div class="temp_text">
+              <div class="box-container">
+                  <div class="box">
+                      <span id="m1"></span>
+                  </div>
+                  <div class="box">
+                      <span id="m2"></span>
+                  </div>
+              </div>
+              <div>Minutos</div>
+            </div>
+            <div class="temp_text">
+              <div class="box-container">
+                  <div class="box">
+                      <span id="s1"></span>
+                  </div>
+                  <div class="box">
+                      <span id="s2"></span>
+                  </div>
+              </div>
+              <div>Segundos</div>
+            </div>
+        </div>
+
+        <!-- <h1>Fecha</h1> -->
+        <h3>08 de febrero del 2025</h3>
+
+
+        <h1>Ceremonia</h1>
+        <div class="contenedor-padre">
+          <div class="fecha">
+            <p>Parroquia la Purísima Concepción</p>
+            <!-- <p class="separador"></p> -->
+            <!-- <p id="separadores"> | </p> -->
+            <img src="img/machete.png" alt="" id="img-machete">
+            <p id="hora">3:00</p>
+            <p id="hora">p.m</p>
+            <!-- <p id="separadores"> | </p> -->
+            <!-- <p class="separador"></p> -->
+            <img src="img/machete.png" alt="" id="img-machete">
+            <button id="boton-ubicacion" onclick="window.location.href='https://www.google.com/maps/place/La+Pur%C3%ADsima+Concepci%C3%B3n+Envigado/@6.1672578,-75.5636779,17z/data=!3m1!4b1!4m6!3m5!1s0x8e46836af80f7671:0xfa0f9dcaece25bd!8m2!3d6.1672525!4d-75.561103!16s%2Fg%2F11s0vmmzdh?hl=es&entry=ttu'">VER</button>
+          </div>
+        </div>
+
+        <br>
+        <h1>Recepción</h1>
+        <div class="contenedor-padre">
+          <div class="fecha">
+            <p>Hotel Boutique Villa de los Angeles</p>
+            <!-- <p class="separador"></p> -->
+            <!-- <p id="separadores"> | </p> -->
+            <img src="img/machete.png" alt="" id="img-machete">
+            <p id="hora">5:30</p>
+            <p id="hora">p.m</p>
+            <!-- <p id="separadores"> | </p> -->
+            <!-- <p class="separador"></p> -->
+            <img src="img/machete.png" alt="" id="img-machete">
+            <button id="boton-ubicacion" onclick="window.location.href='https://www.google.com/maps/place/Hotel+Boutique+Villa+De+Los+Angeles/@6.1795488,-75.5523234,17z/data=!3m1!4b1!4m9!3m8!1s0x8e4682c26b2d56ad:0x5d6c5f316a2dc050!5m2!4m1!1i2!8m2!3d6.1795435!4d-75.5497485!16s%2Fg%2F11b6dqns1p?hl=es&entry=ttu'">VER</button>
+          </div>
+        </div>
+
+        <h1>Mapa</h1>
+        <img src="img/rutaw.jpeg">
+
+          <h1>El gran dia</h1>
+            <img src="img/itinerariow.jpeg">
+
+
+
+           
+            <br>
+            <h1 class="codigo-vestuario">Código de vestuario</h1>
+            <img src="img/vestuariow.jpeg" class="img-codigo-vestuario">
+
+            <h1>Regalo</h1>
+            <img src="img/regalow.jpeg" alt="regalo" class="regalo">
+
+
+            <h1>Importante</h1>
+            <img src="img/advertenciasw.jpeg" alt="advertencias" class="advertencias">
+
+            <br>
+            <br>
+            <div class="video-container" style="width: 40vh; height: 70vh; overflow: hidden;">
+              <video id="myVideo" muted autoplay loop playsinline>
+                  <source src="media/video1.mp4" type="video/mp4">
+                  <source src="media/video1.webm" type="video/webm">
+                  Tu navegador no soporta el elemento <code>video</code>.
+              </video>
+          </div>
+
+          <div class="contenedor">
+            <div class="frase"> 
+              <p class="p-text2"> Hay momentos en la vida que son especiales por si solos, pero compartirlos con las personas que queremos los hace inolvidables.
+              </p>
+            </div>
+          </div>
+
+            <!-- <br>
+            <h1 class="confirmacion">Confirma tu asistencia</h1>
+            <div id="asistencias">
+            <button id="boton-confirmar" onclick="window.location.href='https://api.whatsapp.com/send?phone=3218818944&text=%C2%A1Hola!%20%F0%9F%92%92%F0%9F%91%B0%F0%9F%8F%BC%E2%80%8D%E2%99%82%EF%B8%8F%F0%9F%92%8D%F0%9F%A4%B5%F0%9F%8F%BB%0ANos%20encantar%C3%ADa%20contar%20con%20su%20presencia%20en%20nuestra%20boda%2C%20por%20lo%20que%20tenemos%20dos%20%282%29%20cupos%20asignados%20para%20ustedes.%0APor%20favor%2C%20confirmar%20su%20asistencia%20antes%20del%202025%2F01%2F08%20para%20reservar%20su%20lugar.%20De%20no%20recibir%20confirmaci%C3%B3n%2C%20entenderemos%20que%20no%20podr%C3%A1s%20acompa%C3%B1arnos.%0A*Nombre%201*%3A%0A*Nombre%202*%3A%0A%C2%A1Esperamos%20verlos%20y%20celebrar%20juntos%20este%20d%C3%ADa%20tan%20especial%21%0ACon%20cari%C3%B1o%2C%20C%26J'">CONFIRMAR AQUI</button>
+            <p class="p-text3"> Por favor confírmanos tu asistencia antes del 8 de enero 2025.
+            </p>
+            <p class="p-text3">En caso de no confirmar entendemos que no pueden acompañarnos
+
+            </p>
+          </div>
+
+
+          <br>
+          <h1 class="confirmacion">Agenda aqui el evento</h1>
+          <div id="asistencias">
+          <button id="boton-confirmar" onclick="window.location.href='https://calendar.app.google/xZU3t2CB6GV6PywF8'">AGENDAR</button>
+        </div> -->
+        <h1>Confirma tu asistencia</h1>
+        <div class="container-bottoms" style="width: 40vh">
+          <div class="column-bottom">
+              <button id="boton-confirmar" onclick="window.location.href='https://api.whatsapp.com/send?phone=3122377762&text=%C2%A1Hola!%20%F0%9F%92%92%F0%9F%91%B0%F0%9F%8F%BC%E2%80%8D%E2%99%82%EF%B8%8F%F0%9F%92%8D%F0%9F%A4%B5%F0%9F%8F%BB%0ANos%20encantar%C3%ADa%20contar%20con%20su%20presencia%20en%20nuestra%20boda%2C%20por%20lo%20que%20tenemos%20cinco%20%285%29%20cupos%20asignados%20para%20ustedes.%0APor%20favor%2C%20confirmar%20su%20asistencia%20antes%20del%202025%2F01%2F08%20para%20reservar%20su%20lugar.%20De%20no%20recibir%20confirmaci%C3%B3n%2C%20entenderemos%20que%20no%20podr%C3%A1s%20acompa%C3%B1arnos.%0A*Nombre%201*%3A%0A*Nombre%202*%3A%0A%C2%A1Esperamos%20verlos%20y%20celebrar%20juntos%20este%20d%C3%ADa%20tan%20especial%21%0ACon%20cari%C3%B1o%2C%20C%26J'">CONFIRMAR AQUI
+              </button>
+          </div>
+          <div class="column-bottom">
+            <button id="boton-confirmar" onclick="window.location.href='https://calendar.app.google/xZU3t2CB6GV6PywF8'">AGENDAR
+            </button>
+          </div>
+        </div>
+        <p class="p-text3"> Por favor confírmanos tu asistencia antes del 8 de enero 2025.
+        </p>
+
+
+
+        </div>
+
+    </div>
+
+  <script>
+    // Función para mostrar el mensaje letra por letra
+    function mostrarMensaje() {
+      var mensaje = document.getElementById("mensaje");
+      var texto = "Bienvenidos a nuestra historia.\n\n Carolina Zuluaga \n&\n Julian Atehortua";
+      var index = 0;
+
+      function mostrarSiguienteLetra() {
+        mensaje.textContent += texto[index];
+        index++;
+
+        if (index < texto.length) {
+          setTimeout(mostrarSiguienteLetra, 60); // Retardo de 100 milisegundos entre letras
+        }
+      }
+
+      mostrarSiguienteLetra();
+    }
+
+    // Función para mostrar la bienvenida y luego la tarjeta
+    function mostrarBienvenida() {
+      var bienvenida = document.getElementById("bienvenida");
+      var tarjeta = document.getElementById("tarjeta");
+
+      bienvenida.style.opacity = "1"; // Hace visible la bienvenida
+      setTimeout(function() {
+        bienvenida.style.opacity = "1"; // Oculta bienvenida después de 4 segundos
+        tarjeta.style.display = "block"; // Muestra tarjeta después de ocultar bienvenida
+
+        setTimeout(function() {
+          tarjeta.style.opacity = "1"; // Hace visible la tarjeta gradualmente
+        }, 100); // Retardo de 100 milisegundos
+
+        setTimeout(function() {
+          bienvenida_fija.style.opacity = "1"; // Hace visible la tarjeta gradualmente
+        }, 100); // Retardo de 100 milisegundos
+        
+      }, 5000); // 4000 milisegundos = 4 segundos
+
+      // Inicia la animación del mensaje
+      mostrarMensaje();
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+    // Establecer la fecha límite (puedes cambiarla a la fecha que desees)
+    const deadline = new Date('2025-02-08T15:00:00');
+
+    function updateCountdown() {
+        const now = new Date();
+        const timeDifference = deadline - now;
+
+        const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+        document.getElementById('days').innerHTML = days;
+        document.getElementById('hours').innerHTML = hours;
+        document.getElementById('minutes').innerHTML = minutes;
+        document.getElementById('seconds').innerHTML = seconds;
+
+
+        document.getElementById('d1').innerText = Math.floor(days / 100).toString();
+        document.getElementById('d2').innerText = Math.floor((days % 100) / 10).toString();
+        document.getElementById('d3').innerText = Math.floor(days % 10).toString();
+
+        document.getElementById('h1').innerText = Math.floor(hours / 10).toString();
+        document.getElementById('h2').innerText = Math.floor(hours % 10).toString();
+
+        document.getElementById('m1').innerText = Math.floor(minutes / 10).toString();
+        document.getElementById('m2').innerText = Math.floor(minutes % 10).toString();
+
+        document.getElementById('s1').innerText = Math.floor(seconds / 10).toString();
+        document.getElementById('s2').innerText = Math.floor(seconds % 10).toString();
+
+    }
+
+        // Actualizar la cuenta regresiva cada segundo
+        setInterval(updateCountdown, 1000);
+
+        // Inicializar la cuenta regresiva al cargar la página
+        updateCountdown();
+    });
+
+    // Llamar a la función para iniciar el proceso
+    mostrarBienvenida();
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var frases = document.querySelectorAll('.frase');
+
+      window.addEventListener('scroll', function() {
+        frases.forEach(function(frase, index) {
+          var bounding = frase.getBoundingClientRect();
+
+          // Verificar si la parte superior de la frase está dentro de la ventana gráfica
+          if (bounding.top >= 0 && bounding.top <= window.innerHeight) {
+            setTimeout(function() {
+              frase.style.display = 'block';
+            }, index * 7000); // Ajusta el retardo (en milisegundos) según sea necesario
+          }
+        });
+      });
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+  var eventos = document.querySelectorAll('.evento');
+
+  window.addEventListener('scroll', function() {
+    eventos.forEach(function(evento, index) {
+      var bounding = evento.getBoundingClientRect();
+
+      // Verificar si el evento está dentro de la ventana gráfica
+      if (bounding.top >= 0 && bounding.top <= window.innerHeight) {
+        setTimeout(function() {
+          evento.style.display = 'block';
+        }, 10000 + index * 1500); // Retardo inicial de 8 segundos y 2 segundos entre cada evento
+      }
+    });
+  });
+
+  // Asegurarse de que los eventos visibles en la carga inicial se muestren
+  window.dispatchEvent(new Event('scroll'));
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+            const carousel = document.querySelector('.carousel');
+            const items = document.querySelectorAll('.carousel-item');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            
+            let currentIndex = 0;
+            const totalItems = items.length;
+            const intervalTime = 3000; // 3 segundos
+
+            function updateCarousel() {
+                carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }
+
+            function nextSlide() {
+                currentIndex = (currentIndex === totalItems - 1) ? 0 : currentIndex + 1;
+                updateCarousel();
+            }
+
+            // Avanzar automáticamente cada 3 segundos
+            let slideInterval = setInterval(nextSlide, intervalTime);
+
+            // Funcionalidad de los botones
+            prevBtn.addEventListener('click', function() {
+                currentIndex = (currentIndex === 0) ? totalItems - 1 : currentIndex - 1;
+                updateCarousel();
+                resetInterval();
+            });
+
+            nextBtn.addEventListener('click', function() {
+                nextSlide();
+                resetInterval();
+            });
+
+            // Resetear el intervalo cuando se usa manualmente el carrusel
+            function resetInterval() {
+                clearInterval(slideInterval);
+                slideInterval = setInterval(nextSlide, intervalTime);
+            }
+        });
+
+
+  </script>
+</body>
+</html>
